@@ -1,6 +1,6 @@
 <?php
 
-namespace Daulat\Taggy;
+namespace Daulat\Taggy\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,8 @@ class TaggyServiceProvider extends ServiceProvider
     public function boot()
     {
         
-       $this->loadMigrationsFrom(__DIR__ . '/../migrations');
+       $this->loadMigrationsFrom(__DIR__ . '/../../migrations');
+       $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 
     /**

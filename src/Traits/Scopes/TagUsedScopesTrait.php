@@ -1,6 +1,6 @@
 <?php
 
-namespace Daulat\Taggy\Scopes;
+namespace Daulat\Taggy\Traits\Scopes;
 
 trait TagUsedScopesTrait
 {

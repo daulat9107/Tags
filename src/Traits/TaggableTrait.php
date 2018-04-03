@@ -1,11 +1,11 @@
 <?php
 
-namespace Daulat\Taggy;
+namespace Daulat\Taggy\Traits;
 
 use Daulat\Taggy\Models\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Daulat\Taggy\Scopes\TaggableScopeTrait;
+use Daulat\Taggy\Traits\Scopes\TaggableScopeTrait;
 trait TaggableTrait
 {
     use TaggableScopeTrait;

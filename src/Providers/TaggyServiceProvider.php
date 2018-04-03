@@ -2,6 +2,8 @@
 
 namespace Daulat\Taggy\Providers;
 
+use Daulat\Taggy\Traits\Spam\Service\AkismetSpamService;
+use Daulat\Taggy\Traits\Spam\Service\SpamServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 class TaggyServiceProvider extends ServiceProvider
@@ -27,6 +29,8 @@ class TaggyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(SpamServiceInterface::class,function($app){
+            return new AkismetSpamService(new \GuzzleHttp\Client);
+        });
     }
 }

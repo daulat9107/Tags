@@ -61,7 +61,7 @@ Next, Run
 php artisan make:auth
 php artisam migrate
 ```
-### And add some dummy tags in tag table.
+### And add some dummy tags in tags table.
 
 Now you can see example in
 ```bash

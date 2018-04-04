@@ -59,7 +59,7 @@ return [
 Next, Run
 ```bash
 php artisan make:auth
-php artisam migrate
+php artisan migrate
 ```
 ### And add some dummy tags in tags table.
 

@@ -4,6 +4,8 @@ namespace Daulat\Taggy\Traits\Spam\Service;
 
 
 use Daulat\Taggy\Traits\Spam\Service\Exceptions\FailedToCheckSpamException;
+use Daulat\Taggy\Traits\Spam\Service\Exceptions\FailedToMarkAsHamException;
+use Daulat\Taggy\Traits\Spam\Service\Exceptions\FailedToMarkAsSpamException;
 use Daulat\Taggy\Traits\Spam\Service\Exceptions\InvalidApiKeyException;
 use Daulat\Taggy\Traits\Spam\Spam;
 use GuzzleHttp\Client as Guzzle;
@@ -51,13 +53,13 @@ class AkismetSpamService implements SpamServiceInterface
 
     public function markAsHam(array $parameters, array $additional = [])
     {
- /*       $request = $this->makeRequest('submit-ham', $this->mapParameters($parameters, $additional));
+        $request = $this->makeRequest('submit-ham', $this->mapParameters($parameters, $additional));
 
         if ($request->getBody()->getContents() !== 'Thanks for making the web a better place.') {
             throw new FailedToMarkAsHamException;
         }
 
-        return true;*/
+        return true;
     }
 
     protected function checkApiKey()

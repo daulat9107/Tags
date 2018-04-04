@@ -4,9 +4,7 @@ namespace Daulat\Taggy\Traits\Spam\Service\Exceptions;
 
 use Exception;
 
-/**
-* 
-*/
+
 class FailedToMarkAsSpamException extends Exception
 {
     

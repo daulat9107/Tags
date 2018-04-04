@@ -17,15 +17,15 @@ trait Spammable
         return Spam::isSpam($this->getSpamColumnValues(), $additional);
     }
 
-/*    public function markAsSpam(array $additional = [])
+   public function markAsSpam(array $additional = [])
     {
         return Spam::markAsSpam($this->getSpamColumnValues(), $additional);
-    }*/
+    }
 
-/*    public function markAsHam(array $additional = [])
+   public function markAsHam(array $additional = [])
     {
         return Spam::markAsHam($this->getSpamColumnValues(), $additional);
-    }*/
+    }
 
     protected function getSpamColumnValues()
     {

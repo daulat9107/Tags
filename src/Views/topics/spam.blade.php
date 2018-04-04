@@ -8,8 +8,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <a href="{{ route('topics.create') }}">Create Topic</a>
-        <a href="{{ route('topics.in-spam') }}">Spam Topics</a>
+        <a href="{{ route('topics') }}">Back to topics</a>
           <table class="table table-striped">
           <thead>
             <tr>
@@ -35,13 +34,9 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Actions
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="{{ route('topics.add-tags', ['topic' => $topic]) }}"> Add Tags</a></li>
-      <li><a href="{{ route('topics.spam', ['topic' => $topic]) }}"> Mark as spam</a></li>
-      <li><a href="{{ route('topics.re-tags', ['topic' => $topic]) }}"> Retag</a></li>
-      @if($topic->tags()->count()>0)
-      <li><a href="{{ route('topics.remove-any-tags', ['topic' => $topic]) }}"> Remove any Tag</a></li>
-      <li><a href="{{ route('topics.remove-all-tags', ['topic' => $topic]) }}"> Remove all tags</a></li>
-      @endif
+
+      <li><a href="{{ route('topics.ham', ['topic' => $topic]) }}"> Mark as ham</a></li>
+
     </ul>
   </div></td>
             </tr>

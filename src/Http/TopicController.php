@@ -19,6 +19,12 @@ class TopicController extends Controller
         $topics=Topic::orderBy('updated_At','desc')->where('spam',false)->paginate(15);
         return view('taggy::topics.index')->with('topics',$topics);
     }
+    public function inSpam()
+    {
+        
+        $topics=Topic::orderBy('updated_At','desc')->where('spam',true)->paginate(15);
+        return view('taggy::topics.spam')->with('topics',$topics);
+    }
     public function create()
     {
         return view('taggy::topics.create');
@@ -32,10 +38,26 @@ class TopicController extends Controller
         $topic->user()->associate($request->user());
         if($topic->isSpam()){
             $topic->spam=true;
+            $topic->save();
+            return redirect('topics')->with('status', 'New topic created marked as spam.');
         }
         $topic->save();
         return redirect('topics')->with('status', 'New topic created.');
 
+    }
+    public function spam(Topic $topic)
+    {
+        $topic->markAsSpam();
+        $topic->spam=true;
+        $topic->save();
+        return redirect('topics')->with('status', 'Topic Marked as spam.');
+    }
+    public function ham(Topic $topic)
+    {
+        $topic->markAsHam();
+        $topic->spam=false;
+        $topic->save();
+        return redirect('topics')->with('status', 'Topic Marked as Ham.');
     }
     public function showTags(Topic $topic){
         

@@ -65,6 +65,7 @@ php artisan migrate
 
 Now you can see example in
 ```bash
+Login or Register then
 https://www.your-domain.com/topics
 ```
 

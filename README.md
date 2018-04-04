@@ -29,7 +29,7 @@ Add API keys in .env file
 AKISMET_WEBSITE=your-website
 AKISMET_SECRET=your-akismet-secret
 ```
-Get API key form [akismet](https://akismet.com) wordpress site
+Get API key from [akismet](https://akismet.com) site
 
 Update config/services.php 
 

@@ -18,7 +18,6 @@ class Topic extends Model
     public function getSpamColumns()
     {
         return [
-            'title' => 'title',
             'body' => 'body',
             'author' => 'user.name',
             'author_email' => 'user.email',

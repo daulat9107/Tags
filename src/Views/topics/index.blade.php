@@ -8,7 +8,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <a href="{{ route('topic.create') }}">Create Topic</a>
+        <a href="{{ route('topics.create') }}">Create Topic</a>
           <table class="table table-striped">
           <thead>
             <tr>

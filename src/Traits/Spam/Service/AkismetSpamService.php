@@ -2,11 +2,11 @@
 
 namespace Daulat\Taggy\Traits\Spam\Service;
 
+
+use Daulat\Taggy\Traits\Spam\Service\Exceptions\FailedToCheckSpamException;
+use Daulat\Taggy\Traits\Spam\Service\Exceptions\InvalidApiKeyException;
+use Daulat\Taggy\Traits\Spam\Spam;
 use GuzzleHttp\Client as Guzzle;
-/*use App\Spam\Service\Exceptions\InvalidApiKeyException;
-use App\Spam\Service\Exceptions\FailedToCheckSpamException;
-use App\Spam\Service\Exceptions\FailedToMarkAsSpamException;
-use App\Spam\Service\Exceptions\FailedToMarkAsHamException;*/
 
 class AkismetSpamService implements SpamServiceInterface
 {
@@ -19,13 +19,15 @@ class AkismetSpamService implements SpamServiceInterface
         $this->client = $client;
 
         if ($this->checkApiKey() === false) {
-            throw new \Exception;
+            throw new InvalidApiKeyException;
         }
+
     }
 
     public function isSpam(array $parameters, array $additional = [])
     {
-/*        $request = $this->makeRequest('comment-check', $this->mapParameters($parameters, $additional));
+       
+        $request = $this->makeRequest('comment-check', $this->mapParameters($parameters, $additional));
 
         $response = $request->getBody()->getContents();
 
@@ -33,18 +35,18 @@ class AkismetSpamService implements SpamServiceInterface
             throw new FailedToCheckSpamException;
         }
 
-        return $response === 'true';*/
+        return $response === 'true';
     }
 
     public function markAsSpam(array $parameters, array $additional = [])
     {
-/*        $request = $this->makeRequest('submit-spam', $this->mapParameters($parameters, $additional));
+        $request = $this->makeRequest('submit-spam', $this->mapParameters($parameters, $additional));
 
         if ($request->getBody()->getContents() !== 'Thanks for making the web a better place.') {
             throw new FailedToMarkAsSpamException;
         }
 
-        return true;*/
+        return true;
     }
 
     public function markAsHam(array $parameters, array $additional = [])
@@ -60,28 +62,32 @@ class AkismetSpamService implements SpamServiceInterface
 
     protected function checkApiKey()
     {
+        
         $request = $this->makeRequest('verify-key', [
             'key' => config('services.akismet.secret')
         ]);
-        return false;
+        
         return $request->getBody()->getContents() === 'valid';
     }
 
     protected function mapParameters($parameters, $additional = [])
     {
         $parameterMap = config('spam.parameter_map');
-
+        
+       
         $mappedParameters = array_map(function ($key, $value) use ($parameterMap) {
             if (isset($parameterMap[$key])) {
                 return [$parameterMap[$key] => $value];
             }
         }, array_keys($parameters), $parameters);
+       
 
         return array_merge(array_collapse($mappedParameters), $additional);
     }
 
     protected function makeRequest($type, $parameters)
     {
+        
         return $this->client->request('POST', sprintf($this->endpoint, config('services.akismet.secret'), $type), [
             'form_params' => $this->mergeDefaultFormParams($parameters)
         ]);

@@ -13,7 +13,7 @@ trait Spammable
 
     public function isSpam(array $additional = [])
     {
-        dd($this->getSpamColumnValues());
+        
         return Spam::isSpam($this->getSpamColumnValues(), $additional);
     }
 
@@ -30,6 +30,7 @@ trait Spammable
     protected function getSpamColumnValues()
     {
         $modelArray = $this->toArray();
+       
  
         if (count($this->getSpamColumns()) < 1) {
             throw new NullColumnException;

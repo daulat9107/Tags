@@ -4,6 +4,7 @@ namespace Daulat\Taggy\Providers;
 
 use Daulat\Taggy\Traits\Spam\Service\AkismetSpamService;
 use Daulat\Taggy\Traits\Spam\Service\SpamServiceInterface;
+
 use Illuminate\Support\ServiceProvider;
 
 class TaggyServiceProvider extends ServiceProvider

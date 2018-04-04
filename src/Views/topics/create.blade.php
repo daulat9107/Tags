@@ -4,7 +4,7 @@
   <div class="row">
       <div class="col-md-12">
         <h1>Create Topic</h1>
-        <form action="{{ route('topic.store') }}" method="post">
+        <form action="{{ route('topics.store') }}" method="post">
           <div class="form-group{{ $errors->has('title') ? ' has-error':'' }}">
             <label for="title">Title</label>
             <input type="text" name="title" value="{{ old('title') }}" id="title" class="form-control">
